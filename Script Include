@@ -1,0 +1,18 @@
+type: 'requestfields',
+    datacheck: function() {
+		//gs.info('intiallog');
+        var value = current.variables.select_the_category;
+		//gs.info('categoryiswork' +value);
+        var list = [];
+        var a = new GlideRecord("sc_cat_item");
+        a.addQuery('u_item_category', value);
+        a.query();
+        while (a.next()) {
+            var get = a.sys_id;
+            //gs.info('catalogitemlist' + get);
+            list.push(get);
+            return 'sys_idIN' + list;
+
+
+        }
+    }
